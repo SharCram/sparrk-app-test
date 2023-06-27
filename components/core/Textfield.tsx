@@ -27,6 +27,7 @@ const Textfield = ({ label, leftIcon, rightIcon, disabled }: textFieldProps) => 
   };
 
   return (
+    // TODO: implement animation for floating label
     <StyledView
       className={`h-[52px] w-full gap-2 px-[14px] flex-row items-center ${disabled ? 'bg-background-color-primary' : 'bg-background-color-secondary'} border-[1px] border-border-primary rounded-[6px] relative`}
     >
