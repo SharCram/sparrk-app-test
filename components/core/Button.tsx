@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 import { styled } from "nativewind";
 
 const StyledView = styled(View);
+const StyledButton = styled(TouchableOpacity);
 const StyledText = styled(Text);
 
 type buttonParams = {
@@ -55,13 +56,14 @@ const Button = ({ size, mode, disabled, title }: buttonParams) => {
   };
 
   return (
-    <StyledView
+    <StyledButton
       className={`${handleButtonSize()} ${handleButtonMode()} w-full items-center justify-center rounded-[6px]`}
+      disabled={disabled}
     >
       <StyledText className={`text-[18px] ${handleTextColor()}`}>
         {title}
       </StyledText>
-    </StyledView>
+    </StyledButton>
   );
 };
 
