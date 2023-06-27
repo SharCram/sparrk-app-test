@@ -22,8 +22,8 @@ export default function Page() {
       <Button size="medium" mode="primary" title='Button' disabled/>
       <Button size="medium" mode="secondary" title='Button' disabled/>
       <Button size="medium" mode="link" title='Button' disabled/>
-      <Textfield label='Name'icon={<Feather name="user" size={20} />} disabled />
-      <Textfield label='Age' disabled />
+      <Textfield label='Name'leftIcon={<Feather name="user" size={20} />}  />
+      <Textfield label='Age' rightIcon={<Feather name="user" size={20} />} />
       <Textfield label='Email' />
       <Textfield label='Number' />
     </StyledView>
