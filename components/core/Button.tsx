@@ -13,54 +13,40 @@ type buttonParams = {
   title?: String;
 };
 
-const Button = ({ size, mode, disabled, title }: buttonParams) => {
-  const handleButtonSize = () => {
-    switch (size) {
-      case "large":
-        return "h-[52px]";
-      case "medium":
-        return "h-[48px]";
-      case "small":
-        return "h-[36px]";
-    }
+const Button = ({ size= 'large', mode='primary', disabled, title }: buttonParams) => {
+
+  const buttonSizeStyles = {
+    large: "h-[52px]",
+    medium: "h-[48px]",
+    small: "h-[36px]",
   };
 
-  const handleButtonMode = () => {
-    switch (mode) {
-      case "primary":
-        return disabled ? "bg-btn-disable" : "bg-btn-primary";
-      case "secondary":
-        return `border-[0.5px] bg-background-color-secondary ${
-          disabled ? "border-btn-disable" : "border-btn-secondary"
-        } bg-secondary-white`;
-      case "link":
-        return "";
-    }
+  const buttonModeStyles = {
+    primary: disabled ? "bg-btn-disable" : "bg-btn-primary",
+    secondary: disabled
+      ? "border-[0.5px] bg-background-color-secondary border-btn-disable bg-secondary-white"
+      : "border-[0.5px] bg-background-color-secondary border-btn-secondary bg-secondary-white",
+    link: ''
   };
 
-  const handleTextColor = () => {
-    switch (mode) {
-      case "primary":
-        return `${
-          disabled ? "text-text-secondary" : "text-text-light"
-        } font-bold`;
-      case "secondary":
-        return `${
-          disabled ? "text-text-secondary" : "text-text-primary"
-        } font-bold`;
-      case "link":
-        return `${
-          disabled ? "text-text-disable" : "text-text-primary"
-        } font-normal underline`;
-    }
-  };
+  const buttonTextStyle = {
+    primary: disabled ? 'font-bold text-text-secondary' : 'font-bold text-text-light',
+    secondary: disabled ? 'font-bold text-text-secondary' : 'font-bold text-text-primary',
+    link: disabled ? 'text-text-disable font-normal underline' : 'text-text-primary font-normal underline'
+  }
+
+  const textSizeStyles = {
+    large: 'text-lg',
+    medium: 'text-base',
+    small: 'text-sm'
+  }
 
   return (
     <StyledButton
-      className={`${handleButtonSize()} ${handleButtonMode()} w-full items-center justify-center rounded-[6px]`}
+      className={`${buttonSizeStyles[size]} ${buttonModeStyles[mode]} w-full items-center justify-center rounded-[6px]`}
       disabled={disabled}
     >
-      <StyledText className={`text-[18px] ${handleTextColor()}`}>
+      <StyledText className={`text-[18px] ${buttonTextStyle[mode]} ${mode === 'link' ? textSizeStyles[size] : undefined}`}>
         {title}
       </StyledText>
     </StyledButton>
